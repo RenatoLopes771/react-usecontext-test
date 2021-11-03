@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ContextoUsuario } from '../../Services/context';
 import './navbar.css';
 
 export default function Navbar() {
 
-    const contexto = ContextoUsuario;
+    const { logado } = useContext(ContextoUsuario);
 
     return (
         <div className="navbarComponent" >
             <Link to="/">Home</Link><br />
 
             {
-                contexto.logado
+                logado
                 ? <>
-                    <Link to="/conteudo">Conteudo</Link>
+                    <Link to="/content">Conteudo</Link>
                 </>
 
                 : <>

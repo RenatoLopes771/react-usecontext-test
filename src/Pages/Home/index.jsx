@@ -1,17 +1,24 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { ContextoUsuario } from '../../Services/context';
+import React, { useContext } from 'react';
 import Navbar from '../../Components/Navbar';
+import { ContextoUsuario } from '../../Services/context';
 
 export default function Home() {
     
-    const contexto = ContextoUsuario;
+    const { logado, setLogado } = useContext(ContextoUsuario);
 
     return (
         <>
             <Navbar />
-            <br />
-            <p>Página Home</p>
+            <p>Página Home</p>  
+            {
+                logado 
+                && <>
+                    <br />
+                    <button onClick={ () => setLogado(false) } >Deslogar</button>
+                </>
+            }
+            
+
         </>
     );
 }

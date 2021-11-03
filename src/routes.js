@@ -7,15 +7,15 @@ import { ContextoUsuario } from './Services/context';
 
 export default function Routes() {
 
-    const contexto = useContext(ContextoUsuario);
-
+    const { logado } = useContext(ContextoUsuario);
+    
     return (
         <>
             <Router>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/login" component={Login} />
                 {
-                    contexto.logado && <Route exact path="/content" component={Content} />
+                    logado && <Route exact path="/content" component={Content} />
                 }
             </Router>
         </>

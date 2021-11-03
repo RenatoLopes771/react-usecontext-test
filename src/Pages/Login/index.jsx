@@ -4,19 +4,15 @@ import { ContextoUsuario } from '../../Services/context';
 
 export default function Login() {
 
-    const context = useContext(ContextoUsuario);
-
-    function fazerLogin() {
-        context.logado = true;
-    }
+    const { logado, setLogado } = useContext(ContextoUsuario);
 
     return (
         <>
             {
-                context.logado && <Redirect to="/" />
+                logado && <Redirect to="/" />
             }
             <p>Página Login</p>  
-            <button onClick={ () => {fazerLogin()} } >Fazer login</button>
+            <button onClick={ () => { setLogado(true) } } >Fazer login</button>
         </>
     );
 }
